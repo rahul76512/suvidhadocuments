@@ -5,36 +5,41 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
 
-const allServices = [
-  "New Aadhaar Enrollment",
-  "Aadhaar Update",
-  "Biometric Update",
-  "Aadhaar PVC Card",
-  "E-Aadhaar Download",
-  "Aadhaar Verification",
-  "Income Certificate",
-  "Domicile Certificate",
-  "SC/ST/OBC Certificate",
-  "EWS Certificate",
-  "Birth Certificate",
-  "Death Certificate",
-  "Marriage Certificate",
-  "SMC Certificate",
-  "PAN Card Services",
-  "Voter ID Card",
-  "Driving License",
-  "Passport",
-  "Gazette Work",
-  "Rent Agreement",
-  "Affidavit",
-  "Legal Consultation",
-  "Marriage Registration",
-  "Legal Heir Certificate",
-  "Property Registration",
-  "DDA Flat Work",
-  "Mutation / NOC / Stamping",
-  "Other",
-];
+const serviceToPhone: Record<string, string> = {
+  // Certificate Services → 7669883030
+  "Income Certificate": "7669883030",
+  "Domicile Certificate": "7669883030",
+  "SC/ST/OBC Certificate": "7669883030",
+  "EWS Certificate": "7669883030",
+  "Birth Certificate": "7669883030",
+  "Death Certificate": "7669883030",
+  "Marriage Certificate": "7669883030",
+  "SMC Certificate": "7669883030",
+  // Aadhaar + ID Government Services → 7669944566
+  "New Aadhaar Enrollment": "7669944566",
+  "Aadhaar Update": "7669944566",
+  "Biometric Update": "7669944566",
+  "Aadhaar PVC Card": "7669944566",
+  "E-Aadhaar Download": "7669944566",
+  "Aadhaar Verification": "7669944566",
+  "PAN Card Services": "7669944566",
+  "Voter ID Card": "7669944566",
+  "Driving License": "7669944566",
+  "Passport": "7669944566",
+  "Gazette Work": "7669944566",
+  // Legal + Property Services → 9868180800
+  "Rent Agreement": "9868180800",
+  "Affidavit": "9868180800",
+  "Legal Consultation": "9868180800",
+  "Marriage Registration": "9868180800",
+  "Legal Heir Certificate": "9868180800",
+  "Property Registration": "9868180800",
+  "DDA Flat Work": "9868180800",
+  "Mutation / NOC / Stamping": "9868180800",
+  "Other": "7669883030",
+};
+
+const allServices = Object.keys(serviceToPhone);
 
 const InquiryForm = () => {
   const { toast } = useToast();
@@ -57,8 +62,9 @@ const InquiryForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    const whatsappNumber = "917669883030";
     const text = `New Inquiry from Website:%0AName: ${encodeURIComponent(form.name)}%0APhone: ${encodeURIComponent(form.phone)}%0AService: ${encodeURIComponent(form.service)}%0AMessage: ${encodeURIComponent(form.message)}`;
-    window.open(`https://wa.me/917669883030?text=${text}`, "_blank");
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
 
     toast({
       title: "Inquiry Sent!",
