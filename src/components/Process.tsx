@@ -2,10 +2,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FileSearch, PhoneCall, ClipboardCheck, CheckCircle } from "lucide-react";
 
 const steps = [
-  { icon: PhoneCall, title: "Contact Us", hindi: "संपर्क करें", desc: "Call, WhatsApp, or visit our office in Dwarka Sector 10" },
-  { icon: FileSearch, title: "Share Requirements", hindi: "आवश्यकता बताएं", desc: "Tell us about the documents or services you need" },
-  { icon: ClipboardCheck, title: "We Process", hindi: "हम प्रक्रिया करेंगे", desc: "Our expert team handles all paperwork & formalities" },
-  { icon: CheckCircle, title: "Get Your Documents", hindi: "दस्तावेज़ प्राप्त करें", desc: "Receive your completed documents quickly & hassle-free" },
+  { icon: PhoneCall, title: "Contact Us", hindi: "संपर्क करें", desc: "Call, WhatsApp, or visit our office in Dwarka Sector 10", gradient: "var(--gradient-aadhaar)" },
+  { icon: FileSearch, title: "Share Requirements", hindi: "आवश्यकता बताएं", desc: "Tell us about the documents or services you need", gradient: "var(--gradient-certificate)" },
+  { icon: ClipboardCheck, title: "We Process", hindi: "हम प्रक्रिया करेंगे", desc: "Our expert team handles all paperwork & formalities", gradient: "var(--gradient-legal)" },
+  { icon: CheckCircle, title: "Get Your Documents", hindi: "दस्तावेज़ प्राप्त करें", desc: "Receive your completed documents quickly & hassle-free", gradient: "var(--gradient-id)" },
 ];
 
 const Process = () => {
@@ -31,19 +31,19 @@ const Process = () => {
               style={{ transitionDelay: `${i * 150}ms` }}
             >
               <div className="relative mb-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-transform duration-300 hover:scale-110">
-                  <step.icon className="h-8 w-8 text-primary" />
+                <div
+                  className="flex h-16 w-16 items-center justify-center rounded-2xl text-white transition-transform duration-300 hover:scale-110 shadow-lg"
+                  style={{ background: step.gradient }}
+                >
+                  <step.icon className="h-8 w-8" />
                 </div>
-                <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-secondary text-xs font-bold text-secondary-foreground shadow-md">
+                <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-card text-xs font-bold text-foreground shadow-md border border-border">
                   {i + 1}
                 </span>
               </div>
               <h3 className="mb-1 text-base font-bold text-foreground">{step.title}</h3>
               <span className="font-hindi mb-2 text-xs text-muted-foreground">{step.hindi}</span>
               <p className="text-sm text-muted-foreground">{step.desc}</p>
-              {i < steps.length - 1 && (
-                <div className="absolute right-0 top-8 hidden h-0.5 w-8 bg-border lg:block" style={{ right: "-1rem" }} />
-              )}
             </div>
           ))}
         </div>
