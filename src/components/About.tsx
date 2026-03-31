@@ -7,7 +7,7 @@ const About = () => (
         <h2 className="section-title">
           About Us <span className="text-primary">| हमारे बारे में</span>
         </h2>
-        <p className="section-subtitle">Trusted name in Dwarka since 2020</p>
+        <p className="section-subtitle">Trusted name in Dwarka Sector 10 since 2020</p>
       </div>
 
       <div className="mx-auto mt-8 grid max-w-5xl gap-8 md:grid-cols-2">
