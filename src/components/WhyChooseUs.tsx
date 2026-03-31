@@ -2,11 +2,11 @@ import { Zap, IndianRupee, ShieldCheck, LayoutGrid, Award } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const reasons = [
-  { icon: Zap, title: "Fast Processing", hindi: "तेज़ प्रक्रिया" },
-  { icon: IndianRupee, title: "Affordable Pricing", hindi: "किफ़ायती दाम" },
-  { icon: ShieldCheck, title: "Trusted Advocate Support", hindi: "भरोसेमंद वकील सहायता" },
-  { icon: LayoutGrid, title: "One-Stop Solution", hindi: "एक ही जगह सब सेवाएं" },
-  { icon: Award, title: "Experienced Staff", hindi: "अनुभवी कर्मचारी" },
+  { icon: Zap, title: "Fast Processing", hindi: "तेज़ प्रक्रिया", gradient: "var(--gradient-aadhaar)" },
+  { icon: IndianRupee, title: "Affordable Pricing", hindi: "किफ़ायती दाम", gradient: "var(--gradient-certificate)" },
+  { icon: ShieldCheck, title: "Trusted Advocate Support", hindi: "भरोसेमंद वकील सहायता", gradient: "var(--gradient-legal)" },
+  { icon: LayoutGrid, title: "One-Stop Solution", hindi: "एक ही जगह सब सेवाएं", gradient: "var(--gradient-id)" },
+  { icon: Award, title: "Experienced Staff", hindi: "अनुभवी कर्मचारी", gradient: "var(--gradient-property)" },
 ];
 
 const WhyChooseUs = () => {
@@ -31,8 +31,11 @@ const WhyChooseUs = () => {
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="mb-3 rounded-xl bg-primary/10 p-3 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-lg">
-                <r.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div
+                className="mb-3 rounded-xl p-3 text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                style={{ background: r.gradient }}
+              >
+                <r.icon className="h-7 w-7" />
               </div>
               <h3 className="mb-1 text-sm font-bold text-foreground">{r.title}</h3>
               <span className="font-hindi text-xs text-muted-foreground">{r.hindi}</span>

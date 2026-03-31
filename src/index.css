@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 48 100% 98%;
-    --foreground: 220 30% 15%;
+    --background: 0 0% 98%;
+    --foreground: 230 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 30% 15%;
+    --card-foreground: 230 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 15%;
+    --popover-foreground: 230 25% 15%;
 
-    --primary: 214 80% 42%;
+    --primary: 214 68% 57%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 48 100% 50%;
-    --secondary-foreground: 220 30% 15%;
+    --secondary: 270 40% 53%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 96%;
+    --muted: 220 15% 95%;
     --muted-foreground: 220 10% 45%;
 
     --accent: 0 75% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 20% 88%;
-    --input: 214 20% 88%;
-    --ring: 214 80% 42%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 214 68% 57%;
 
     --radius: 0.75rem;
 
@@ -45,30 +45,34 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(214 80% 42%) 0%, hsl(214 80% 32%) 100%);
-    --yellow-gradient: linear-gradient(135deg, hsl(48 100% 50%) 0%, hsl(40 100% 55%) 100%);
+    --hero-gradient: linear-gradient(135deg, #4A90E2 0%, #9B59B6 100%);
+    --gradient-aadhaar: linear-gradient(135deg, #00BCD4 0%, #009688 100%);
+    --gradient-certificate: linear-gradient(135deg, #FF9800 0%, #FFC107 100%);
+    --gradient-id: linear-gradient(135deg, #8BC34A 0%, #CDDC39 100%);
+    --gradient-legal: linear-gradient(135deg, #E53935 0%, #F06292 100%);
+    --gradient-property: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
   }
 
   .dark {
-    --background: 220 30% 8%;
+    --background: 230 25% 8%;
     --foreground: 0 0% 95%;
-    --card: 220 30% 12%;
+    --card: 230 25% 11%;
     --card-foreground: 0 0% 95%;
-    --popover: 220 30% 12%;
+    --popover: 230 25% 11%;
     --popover-foreground: 0 0% 95%;
-    --primary: 214 80% 55%;
+    --primary: 214 68% 62%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 48 100% 50%;
-    --secondary-foreground: 220 30% 15%;
-    --muted: 220 20% 18%;
+    --secondary: 270 40% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 230 15% 16%;
     --muted-foreground: 220 10% 60%;
     --accent: 0 75% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 20% 22%;
-    --input: 220 20% 22%;
-    --ring: 214 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 15% 20%;
+    --input: 230 15% 20%;
+    --ring: 214 68% 62%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -77,6 +81,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --hero-gradient: linear-gradient(135deg, #3A78C2 0%, #7B439A 100%);
+    --gradient-aadhaar: linear-gradient(135deg, #00969E 0%, #007A70 100%);
+    --gradient-certificate: linear-gradient(135deg, #E08700 0%, #D4A300 100%);
+    --gradient-id: linear-gradient(135deg, #6F9E38 0%, #A8B42D 100%);
+    --gradient-legal: linear-gradient(135deg, #C62828 0%, #D84A7A 100%);
+    --gradient-property: linear-gradient(135deg, #7B1FA2 0%, #9C51B6 100%);
   }
 }
 
@@ -114,6 +125,10 @@
 
   .floating-button {
     @apply fixed z-50 rounded-full shadow-lg transition-transform duration-200 hover:scale-110;
+  }
+
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-border/50 shadow-lg;
   }
 }
 
