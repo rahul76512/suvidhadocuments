@@ -21,7 +21,7 @@ const Footer = () => (
             <span className="text-lg font-bold text-foreground">SUVIDHA DOCUMENTS</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            Your trusted partner for all documentation &amp; legal services in Dwarka, Delhi.
+            Your trusted partner for all documentation &amp; legal services in Dwarka Sector 10, Delhi.
           </p>
           <p className="font-hindi mt-1 text-sm text-muted-foreground">
             द्वारका में आपकी भरोसेमंद डॉक्यूमेंट सेवा

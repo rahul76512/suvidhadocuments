@@ -15,7 +15,7 @@ const About = () => (
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">SUVIDHA DOCUMENTS</strong>, operated by{" "}
             <strong className="text-primary">Advocate Yash Gupta</strong>, is a trusted name in
-            Dwarka for all types of legal and documentation services.
+            Dwarka Sector 10 for all types of legal and documentation services.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             At Suvidha Documents, we believe in making your legal and essential documentation

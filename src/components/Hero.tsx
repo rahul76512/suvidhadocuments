@@ -19,7 +19,7 @@ const Hero = () => (
       <h1 className="mx-auto mb-6 max-w-4xl animate-fade-in-up text-3xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl [animation-delay:0.1s]">
         SUVIDHA DOCUMENTS
         <span className="mt-2 block text-lg font-semibold text-secondary md:text-2xl lg:text-3xl">
-          Your One Stop Solution for All Documentation Services in Dwarka
+          Your One Stop Solution for All Documentation Services in Dwarka Sector 10
         </span>
       </h1>
 
