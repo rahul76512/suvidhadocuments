@@ -15,7 +15,7 @@ const WhyChooseUs = () => (
         <h2 className="section-title">
           Why Choose Us <span className="text-primary">| हमें क्यों चुनें</span>
         </h2>
-        <p className="section-subtitle">Dwarka's most trusted documentation centre</p>
+        <p className="section-subtitle">Dwarka Sector 10's most trusted documentation centre</p>
       </div>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
