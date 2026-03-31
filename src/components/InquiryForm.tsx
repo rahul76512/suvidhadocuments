@@ -62,8 +62,9 @@ const InquiryForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    const whatsappNumber = "917669883030";
     const text = `New Inquiry from Website:%0AName: ${encodeURIComponent(form.name)}%0APhone: ${encodeURIComponent(form.phone)}%0AService: ${encodeURIComponent(form.service)}%0AMessage: ${encodeURIComponent(form.message)}`;
-    window.open(`https://wa.me/917669883030?text=${text}`, "_blank");
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
 
     toast({
       title: "Inquiry Sent!",
