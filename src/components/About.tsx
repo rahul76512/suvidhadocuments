@@ -1,65 +1,82 @@
 import { ShieldCheck, Users, Award } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const About = () => (
-  <section id="about" className="section-padding bg-background">
-    <div className="container mx-auto">
-      <div className="text-center">
-        <h2 className="section-title">
-          About Us <span className="text-primary">| हमारे बारे में</span>
-        </h2>
-        <p className="section-subtitle">Trusted name in Dwarka Sector 10 since 2020</p>
-      </div>
+const About = () => {
+  const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation();
+  const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation();
 
-      <div className="mx-auto mt-8 grid max-w-5xl gap-8 md:grid-cols-2">
-        <div className="animate-fade-in-up space-y-4">
-          <p className="text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">SUVIDHA DOCUMENTS</strong>, operated by{" "}
-            <strong className="text-primary">Advocate Yash Gupta</strong>, is a trusted name in
-            Dwarka Sector 10 for all types of legal and documentation services.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            At Suvidha Documents, we believe in making your legal and essential documentation
-            process simple, fast, and stress-free. Since 2020, we have been proudly serving
-            individuals and families with a wide range of services such as caste certificates,
-            domicile certificates, property registration, marriage certificates, Aadhaar services,
-            PAN card, and many other essential documents.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            With years of experience and hundreds of satisfied clients, we have built a strong
-            reputation for trust, transparency, and timely delivery. Our dedicated team ensures
-            that every process is handled smoothly and professionally.
-          </p>
+  return (
+    <section id="about" className="section-padding bg-background">
+      <div className="container mx-auto">
+        <div className="text-center">
+          <h2 className="section-title">
+            About Us <span className="text-primary">| हमारे बारे में</span>
+          </h2>
+          <p className="section-subtitle">Trusted name in Dwarka Sector 10 since 2020</p>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="animate-fade-in-up rounded-xl border border-border bg-card p-5 shadow-sm [animation-delay:0.1s]">
-            <p className="font-hindi text-muted-foreground leading-relaxed">
-              हमारा उद्देश्य है कि आपको एक ही जगह पर सभी सरकारी और कानूनी सेवाएं आसानी से
-              मिलें। हम पूरी ईमानदारी और पारदर्शिता के साथ काम करते हैं ताकि आपको सही
-              मार्गदर्शन और तेज सेवा मिल सके।
+        <div className="mx-auto mt-8 grid max-w-5xl gap-8 md:grid-cols-2">
+          <div
+            ref={leftRef}
+            className={`space-y-4 transition-all duration-700 ${
+              leftVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+            }`}
+          >
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">SUVIDHA DOCUMENTS</strong>, operated by{" "}
+              <strong className="text-primary">Advocate Yash Gupta</strong>, is a trusted name in
+              Dwarka Sector 10 for all types of legal and documentation services.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              At Suvidha Documents, we believe in making your legal and essential documentation
+              process simple, fast, and stress-free. Since 2020, we have been proudly serving
+              individuals and families with a wide range of services such as caste certificates,
+              domicile certificates, property registration, marriage certificates, Aadhaar services,
+              PAN card, and many other essential documents.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              With years of experience and hundreds of satisfied clients, we have built a strong
+              reputation for trust, transparency, and timely delivery.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { icon: ShieldCheck, label: "Trusted", hindi: "विश्वसनीय" },
-              { icon: Users, label: "500+ Clients", hindi: "ग्राहक" },
-              { icon: Award, label: "Since 2020", hindi: "2020 से" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-4 text-center shadow-sm"
-              >
-                <item.icon className="h-7 w-7 text-primary" />
-                <span className="text-sm font-semibold text-foreground">{item.label}</span>
-                <span className="font-hindi text-xs text-muted-foreground">{item.hindi}</span>
-              </div>
-            ))}
+          <div
+            ref={rightRef}
+            className={`flex flex-col gap-4 transition-all duration-700 ${
+              rightVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
+            }`}
+          >
+            <div className="rounded-2xl border border-border bg-card/80 p-5 shadow-sm backdrop-blur-sm">
+              <p className="font-hindi text-muted-foreground leading-relaxed">
+                हमारा उद्देश्य है कि आपको एक ही जगह पर सभी सरकारी और कानूनी सेवाएं आसानी से
+                मिलें। हम पूरी ईमानदारी और पारदर्शिता के साथ काम करते हैं ताकि आपको सही
+                मार्गदर्शन और तेज सेवा मिल सके।
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { icon: ShieldCheck, label: "Trusted", hindi: "विश्वसनीय" },
+                { icon: Users, label: "500+ Clients", hindi: "ग्राहक" },
+                { icon: Award, label: "Since 2020", hindi: "2020 से" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="rounded-xl bg-primary/10 p-2.5 transition-colors duration-300 group-hover:bg-primary">
+                    <item.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <span className="text-sm font-semibold text-foreground">{item.label}</span>
+                  <span className="font-hindi text-xs text-muted-foreground">{item.hindi}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default About;
