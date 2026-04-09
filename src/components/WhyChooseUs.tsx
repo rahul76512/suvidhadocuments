@@ -1,5 +1,6 @@
 import { Zap, IndianRupee, ShieldCheck, LayoutGrid, Award } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTilt3D } from "@/hooks/useTilt3D";
 
 const reasons = [
   { icon: Zap, title: "Fast Processing", hindi: "तेज़ प्रक्रिया", gradient: "var(--gradient-aadhaar)" },
@@ -8,6 +9,31 @@ const reasons = [
   { icon: LayoutGrid, title: "One-Stop Solution", hindi: "एक ही जगह सब सेवाएं", gradient: "var(--gradient-id)" },
   { icon: Award, title: "Experienced Staff", hindi: "अनुभवी कर्मचारी", gradient: "var(--gradient-property)" },
 ];
+
+const ReasonCard = ({ r, i, isVisible }: { r: typeof reasons[0]; i: number; isVisible: boolean }) => {
+  const { ref, handleMouseMove, handleMouseLeave } = useTilt3D(10);
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`group flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center shadow-sm transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(0,0,0,0.15)] will-change-transform ${
+        isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
+      }`}
+      style={{ transitionDelay: `${i * 100}ms`, transformStyle: "preserve-3d" }}
+    >
+      <div
+        className="mb-3 rounded-xl p-3 text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,0,0,0.15)]"
+        style={{ background: r.gradient }}
+      >
+        <r.icon className="h-7 w-7" />
+      </div>
+      <h3 className="mb-1 text-sm font-bold text-foreground">{r.title}</h3>
+      <span className="font-hindi text-xs text-muted-foreground">{r.hindi}</span>
+    </div>
+  );
+};
 
 const WhyChooseUs = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -24,22 +50,7 @@ const WhyChooseUs = () => {
 
         <div ref={ref} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {reasons.map((r, i) => (
-            <div
-              key={r.title}
-              className={`group flex flex-col items-center rounded-2xl border border-border bg-card p-6 text-center shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl ${
-                isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
-              }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div
-                className="mb-3 rounded-xl p-3 text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                style={{ background: r.gradient }}
-              >
-                <r.icon className="h-7 w-7" />
-              </div>
-              <h3 className="mb-1 text-sm font-bold text-foreground">{r.title}</h3>
-              <span className="font-hindi text-xs text-muted-foreground">{r.hindi}</span>
-            </div>
+            <ReasonCard key={r.title} r={r} i={i} isVisible={isVisible} />
           ))}
         </div>
       </div>

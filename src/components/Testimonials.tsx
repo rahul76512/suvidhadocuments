@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import FloatingParticles from "@/components/FloatingParticles";
 
 const testimonials = [
   { name: "Rajesh Kumar", hindi: "राजेश कुमार", rating: 5, text: "Excellent service! Got my domicile certificate within 3 days. Very professional and affordable. Highly recommended for anyone in Dwarka.", service: "Domicile Certificate" },
@@ -26,7 +27,8 @@ const Testimonials = () => {
   return (
     <section className="section-padding relative overflow-hidden" style={{ background: "var(--gradient-property)" }}>
       <div className="absolute inset-0 bg-black/20" />
-      <div className="container relative mx-auto" ref={ref}>
+      <FloatingParticles count={15} color="rgba(255,255,255,0.1)" />
+      <div className="container relative z-10 mx-auto" ref={ref}>
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
             Testimonials <span className="text-white/80">| ग्राहक समीक्षा</span>
@@ -39,7 +41,7 @@ const Testimonials = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <div className="relative rounded-2xl border border-white/10 bg-white/10 p-8 backdrop-blur-xl">
+          <div className="relative rounded-2xl border border-white/10 bg-white/10 p-8 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.4)]">
             <Quote className="absolute left-4 top-4 h-8 w-8 text-white/20" />
             <div className="text-center">
               <div className="mb-3 flex justify-center gap-1">
@@ -47,22 +49,23 @@ const Testimonials = () => {
                   <Star
                     key={i}
                     className={`h-5 w-5 transition-all duration-300 ${
-                      i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-white/30"
+                      i < t.rating ? "fill-yellow-400 text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.4)]" : "text-white/30"
                     }`}
+                    style={{ transitionDelay: `${i * 50}ms` }}
                   />
                 ))}
               </div>
               <p className="mb-4 text-base leading-relaxed text-white/90">"{t.text}"</p>
               <p className="font-bold text-white">{t.name}</p>
               <p className="font-hindi text-sm text-white/60">{t.hindi}</p>
-              <span className="mt-1 inline-block rounded-full bg-white/20 px-3 py-0.5 text-xs font-medium text-white">
+              <span className="mt-1 inline-block rounded-full bg-white/20 px-3 py-0.5 text-xs font-medium text-white backdrop-blur-sm">
                 {t.service}
               </span>
             </div>
           </div>
 
           <div className="mt-6 flex items-center justify-center gap-4">
-            <button onClick={prev} className="rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20" aria-label="Previous">
+            <button onClick={prev} className="rounded-full bg-white/10 p-2 text-white transition-all hover:bg-white/20 hover:scale-110" aria-label="Previous">
               <ChevronLeft className="h-5 w-5" />
             </button>
             <div className="flex gap-2">
@@ -71,13 +74,13 @@ const Testimonials = () => {
                   key={i}
                   onClick={() => setCurrent(i)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
-                    i === current ? "w-8 bg-white" : "w-2.5 bg-white/30"
+                    i === current ? "w-8 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]" : "w-2.5 bg-white/30"
                   }`}
                   aria-label={`Testimonial ${i + 1}`}
                 />
               ))}
             </div>
-            <button onClick={next} className="rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20" aria-label="Next">
+            <button onClick={next} className="rounded-full bg-white/10 p-2 text-white transition-all hover:bg-white/20 hover:scale-110" aria-label="Next">
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>

@@ -1,5 +1,31 @@
 import { ShieldCheck, Users, Award } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTilt3D } from "@/hooks/useTilt3D";
+
+const badges = [
+  { icon: ShieldCheck, label: "Trusted", hindi: "विश्वसनीय" },
+  { icon: Users, label: "500+ Clients", hindi: "ग्राहक" },
+  { icon: Award, label: "Since 2020", hindi: "2020 से" },
+];
+
+const BadgeCard = ({ item }: { item: typeof badges[0] }) => {
+  const { ref, handleMouseMove, handleMouseLeave } = useTilt3D(12);
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all duration-300 hover:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.15)] will-change-transform"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div className="rounded-xl bg-primary/10 p-2.5 transition-all duration-300 group-hover:bg-primary group-hover:shadow-[0_0_15px_hsl(var(--primary)/0.3)]">
+        <item.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
+      </div>
+      <span className="text-sm font-semibold text-foreground">{item.label}</span>
+      <span className="font-hindi text-xs text-muted-foreground">{item.hindi}</span>
+    </div>
+  );
+};
 
 const About = () => {
   const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation();
@@ -55,21 +81,8 @@ const About = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-3">
-              {[
-                { icon: ShieldCheck, label: "Trusted", hindi: "विश्वसनीय" },
-                { icon: Users, label: "500+ Clients", hindi: "ग्राहक" },
-                { icon: Award, label: "Since 2020", hindi: "2020 से" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="rounded-xl bg-primary/10 p-2.5 transition-colors duration-300 group-hover:bg-primary">
-                    <item.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
-                  </div>
-                  <span className="text-sm font-semibold text-foreground">{item.label}</span>
-                  <span className="font-hindi text-xs text-muted-foreground">{item.hindi}</span>
-                </div>
+              {badges.map((item) => (
+                <BadgeCard key={item.label} item={item} />
               ))}
             </div>
           </div>
