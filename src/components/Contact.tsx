@@ -1,6 +1,47 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTilt3D } from "@/hooks/useTilt3D";
+
+const contactItems = [
+  { icon: Phone, title: "Phone", text: "+91 7669883030", href: "tel:+917669883030" },
+  { icon: MessageCircle, title: "WhatsApp", text: "+91 7669883030", href: "https://wa.me/917669883030" },
+  { icon: Mail, title: "Email", text: "suvidhalegals35@gmail.com", href: "mailto:suvidhalegals35@gmail.com" },
+  { icon: MapPin, title: "Address", text: "Shop No-35, DDA Market, opposite SDM Office, Sector 10 Dwarka, Delhi, 110075" },
+  { icon: Clock, title: "Business Hours", text: "Mon – Sat: 10:00 AM – 6:00 PM | Sunday: Closed" },
+];
+
+const ContactCard = ({ item }: { item: typeof contactItems[0] }) => {
+  const { ref, handleMouseMove, handleMouseLeave } = useTilt3D(8);
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm transition-all duration-300 hover:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.12)] will-change-transform"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div className="rounded-xl bg-primary/10 p-2.5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-[0_0_15px_hsl(var(--primary)/0.3)]">
+        <item.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+      </div>
+      <div>
+        <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
+        {item.href ? (
+          <a
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="text-sm text-primary underline-offset-2 hover:underline"
+          >
+            {item.text}
+          </a>
+        ) : (
+          <p className="text-sm text-muted-foreground">{item.text}</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -21,45 +62,17 @@ const Contact = () => {
               isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
             }`}
           >
-            {[
-              { icon: Phone, title: "Phone", text: "+91 7669883030", href: "tel:+917669883030" },
-              { icon: MessageCircle, title: "WhatsApp", text: "+91 7669883030", href: "https://wa.me/917669883030" },
-              { icon: Mail, title: "Email", text: "suvidhalegals35@gmail.com", href: "mailto:suvidhalegals35@gmail.com" },
-              { icon: MapPin, title: "Address", text: "Shop No-35, DDA Market, opposite SDM Office, Sector 10 Dwarka, Delhi, 110075" },
-              { icon: Clock, title: "Business Hours", text: "Mon – Sat: 10:00 AM – 6:00 PM | Sunday: Closed" },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="rounded-xl bg-primary/10 p-2.5 transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
-                  <item.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="text-sm text-primary underline-offset-2 hover:underline"
-                    >
-                      {item.text}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted-foreground">{item.text}</p>
-                  )}
-                </div>
-              </div>
+            {contactItems.map((item) => (
+              <ContactCard key={item.title} item={item} />
             ))}
 
             <div className="flex gap-3">
-              <Button asChild variant="call" size="lg" className="flex-1 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <Button asChild variant="call" size="lg" className="flex-1 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--accent)/0.3)]">
                 <a href="tel:+917669883030">
                   <Phone className="h-4 w-4" /> Call Now
                 </a>
               </Button>
-              <Button asChild variant="whatsapp" size="lg" className="flex-1 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <Button asChild variant="whatsapp" size="lg" className="flex-1 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(37,211,102,0.3)]">
                 <a href="https://wa.me/917669883030" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-4 w-4" /> WhatsApp
                 </a>
