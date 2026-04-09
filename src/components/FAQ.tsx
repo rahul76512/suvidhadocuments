@@ -19,8 +19,11 @@ const FAQ = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="faq" className="section-padding bg-background">
-      <div className="container mx-auto max-w-3xl">
+    <section id="faq" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute -bottom-32 -right-32 h-64 w-64 rounded-full bg-secondary/5 blur-3xl" />
+
+      <div className="container relative z-10 mx-auto max-w-3xl">
         <div className="text-center">
           <h2 className="section-title">
             FAQs <span className="text-primary">| अक्सर पूछे जाने वाले सवाल</span>
@@ -39,7 +42,7 @@ const FAQ = () => {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="rounded-xl border border-border bg-card px-5 shadow-sm transition-shadow hover:shadow-md"
+                className="rounded-xl border border-border bg-card px-5 shadow-sm transition-all hover:shadow-md hover:border-primary/20"
               >
                 <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:no-underline">
                   {faq.q}

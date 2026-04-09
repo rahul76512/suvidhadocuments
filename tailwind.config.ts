@@ -92,6 +92,10 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)", opacity: "0.3" },
+          "50%": { transform: "translateY(-20px) rotate(5deg)", opacity: "0.6" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,6 +104,7 @@ export default {
         "fade-in": "fade-in 0.5s ease-out forwards",
         "slide-in-left": "slide-in-left 0.5s ease-out forwards",
         "bounce-gentle": "bounce-gentle 2s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
       },
     },
   },

@@ -7,34 +7,20 @@ import { Send } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const serviceToPhone: Record<string, string> = {
-  "Income Certificate": "7669883030",
-  "Domicile Certificate": "7669883030",
-  "SC/ST/OBC Certificate": "7669883030",
-  "EWS Certificate": "7669883030",
-  "Birth Certificate": "7669883030",
-  "Death Certificate": "7669883030",
-  "Marriage Certificate": "7669883030",
-  "SMC Certificate": "7669883030",
-  "New Aadhaar Enrollment": "7669944566",
-  "Aadhaar Update": "7669944566",
-  "Biometric Update": "7669944566",
-  "Aadhaar PVC Card": "7669944566",
-  "E-Aadhaar Download": "7669944566",
-  "Aadhaar Verification": "7669944566",
-  "PAN Card Services": "7669944566",
-  "Voter ID Card": "7669944566",
-  "Driving License": "7669944566",
-  "Passport": "7669944566",
-  "Gazette Work": "7669944566",
-  "Rent Agreement": "9868180800",
-  "Affidavit": "9868180800",
-  "Legal Consultation": "9868180800",
-  "Marriage Registration": "9868180800",
-  "Legal Heir Certificate": "9868180800",
-  "Property Registration": "9868180800",
-  "DDA Flat Work": "9868180800",
-  "Mutation / NOC / Stamping": "9868180800",
-  "Other": "7669883030",
+  "Income Certificate": "7669883030", "Domicile Certificate": "7669883030",
+  "SC/ST/OBC Certificate": "7669883030", "EWS Certificate": "7669883030",
+  "Birth Certificate": "7669883030", "Death Certificate": "7669883030",
+  "Marriage Certificate": "7669883030", "SMC Certificate": "7669883030",
+  "New Aadhaar Enrollment": "7669944566", "Aadhaar Update": "7669944566",
+  "Biometric Update": "7669944566", "Aadhaar PVC Card": "7669944566",
+  "E-Aadhaar Download": "7669944566", "Aadhaar Verification": "7669944566",
+  "PAN Card Services": "7669944566", "Voter ID Card": "7669944566",
+  "Driving License": "7669944566", "Passport": "7669944566",
+  "Gazette Work": "7669944566", "Rent Agreement": "9868180800",
+  "Affidavit": "9868180800", "Legal Consultation": "9868180800",
+  "Marriage Registration": "9868180800", "Legal Heir Certificate": "9868180800",
+  "Property Registration": "9868180800", "DDA Flat Work": "9868180800",
+  "Mutation / NOC / Stamping": "9868180800", "Other": "7669883030",
 };
 
 const allServices = Object.keys(serviceToPhone);
@@ -68,8 +54,12 @@ const InquiryForm = () => {
   };
 
   return (
-    <section id="inquiry" className="section-padding bg-background">
-      <div className="container mx-auto max-w-xl">
+    <section id="inquiry" className="section-padding bg-background relative overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-secondary/5 blur-3xl" />
+
+      <div className="container relative z-10 mx-auto max-w-xl">
         <div className="text-center">
           <h2 className="section-title">
             Inquiry Form <span className="text-primary">| पूछताछ फॉर्म</span>
@@ -83,21 +73,21 @@ const InquiryForm = () => {
         >
           <form
             onSubmit={handleSubmit}
-            className="mt-8 space-y-4 rounded-2xl border border-border bg-card/80 p-6 shadow-lg backdrop-blur-sm"
+            className="mt-8 space-y-4 rounded-2xl border border-border bg-card/80 p-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] backdrop-blur-sm"
           >
             <div>
               <label htmlFor="name" className="mb-1 block text-sm font-medium text-foreground">Name / नाम *</label>
-              <Input id="name" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={100} className="transition-shadow focus:shadow-md" />
+              <Input id="name" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={100} className="transition-all focus:shadow-[0_0_15px_hsl(var(--primary)/0.15)] focus:border-primary" />
               {errors.name && <p className="mt-1 text-xs text-accent">{errors.name}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="mb-1 block text-sm font-medium text-foreground">Phone Number / फोन नंबर *</label>
-              <Input id="phone" type="tel" placeholder="10-digit mobile number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })} inputMode="numeric" className="transition-shadow focus:shadow-md" />
+              <Input id="phone" type="tel" placeholder="10-digit mobile number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })} inputMode="numeric" className="transition-all focus:shadow-[0_0_15px_hsl(var(--primary)/0.15)] focus:border-primary" />
               {errors.phone && <p className="mt-1 text-xs text-accent">{errors.phone}</p>}
             </div>
             <div>
               <label htmlFor="service" className="mb-1 block text-sm font-medium text-foreground">Service Required / सेवा चुनें *</label>
-              <select id="service" value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus:shadow-md">
+              <select id="service" value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus:shadow-[0_0_15px_hsl(var(--primary)/0.15)]">
                 <option value="">-- Select a Service --</option>
                 {allServices.map((s) => (<option key={s} value={s}>{s}</option>))}
               </select>
@@ -105,10 +95,10 @@ const InquiryForm = () => {
             </div>
             <div>
               <label htmlFor="message" className="mb-1 block text-sm font-medium text-foreground">Message / संदेश</label>
-              <Textarea id="message" placeholder="Any additional details..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={500} rows={3} className="transition-shadow focus:shadow-md" />
+              <Textarea id="message" placeholder="Any additional details..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={500} rows={3} className="transition-all focus:shadow-[0_0_15px_hsl(var(--primary)/0.15)] focus:border-primary" />
               {errors.message && <p className="mt-1 text-xs text-accent">{errors.message}</p>}
             </div>
-            <Button type="submit" className="w-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg" size="lg">
+            <Button type="submit" className="w-full transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_hsl(var(--primary)/0.3)]" size="lg">
               <Send className="h-4 w-4" /> Submit Inquiry / भेजें
             </Button>
           </form>
